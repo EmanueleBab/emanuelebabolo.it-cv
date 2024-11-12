@@ -1,0 +1,40 @@
+@use 'variables' as *;
+
+@mixin respond-below($breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+  
+  @mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @mixin flex-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  @mixin card-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  @mixin section-title {
+    color: map-get($colors, 'dark-blue');
+    font-size: map-get($spacing, 'xl');
+    margin-bottom: map-get($spacing, 'xl');
+    padding-bottom: map-get($spacing, 'sm');
+    border-bottom: 2px solid map-get($colors, 'light-blue');
+    position: relative;
+  
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: map-get($colors, 'primary-blue');
+    }
+  }

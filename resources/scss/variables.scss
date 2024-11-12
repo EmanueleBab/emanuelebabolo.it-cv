@@ -1,0 +1,25 @@
+$colors: (
+  'primary-blue': #2563eb,
+  'secondary-blue': #3b82f6,
+  'light-blue': #bfdbfe,
+  'dark-blue': #1e40af,
+  'text-dark': #1f2937,
+  'text-light': #6b7280,
+  'white': #ffffff,
+  'background': #f8fafc
+);
+
+$breakpoints: (
+  'sm': 600px
+);
+
+$spacing: (
+  'xs': 0.25rem,
+  'sm': 0.5rem,
+  'md': 1rem,
+  'lg': 1.5rem,
+  'xl': 2rem,
+  '2xl': 2.5rem,
+  '3xl': 3rem,
+  '4xl': 3.5rem
+);

@@ -1,0 +1,259 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: map-get($colors, 'background');
+  color: map-get($colors, 'text-dark');
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 800px;
+  margin: map-get($spacing, 'xl') auto;
+  padding: 0;
+  background: map-get($colors, 'white');
+  @include card-shadow;
+  border-radius: 8px;
+  overflow: hidden;
+
+  @include respond-below('sm') {
+    margin: 0;
+    border-radius: 0;
+  }
+}
+
+.language-switcher {
+  position: fixed;
+  top: map-get($spacing, 'md');
+  right: map-get($spacing, 'md');
+  background: map-get($colors, 'white');
+  padding: map-get($spacing, 'sm');
+  border-radius: 4px;
+  @include card-shadow;
+  z-index: 1000;
+
+  a {
+    padding: map-get($spacing, 'xs') map-get($spacing, 'sm');
+    text-decoration: none;
+    color: map-get($colors, 'text-light');
+    margin: 0 map-get($spacing, 'xs');
+
+    &.active {
+      color: map-get($colors, 'primary-blue');
+      font-weight: 600;
+    }
+  }
+}
+
+header {
+  text-align: center;
+  padding: map-get($spacing, '4xl') map-get($spacing, 'xl');
+  background: linear-gradient(135deg, 
+    map-get($colors, 'primary-blue'),
+    map-get($colors, 'dark-blue')
+  );
+  color: map-get($colors, 'white');
+  margin-bottom: 0;
+
+  @include respond-below('sm') {
+    padding: map-get($spacing, '2xl') map-get($spacing, 'md');
+  }
+
+  .header-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .name {
+    font-size: 3rem;
+    color: map-get($colors, 'white');
+    margin-bottom: map-get($spacing, 'md');
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: -0.5px;
+
+    @include respond-below('sm') {
+      font-size: 2.5rem;
+    }
+  }
+
+  .title {
+    color: map-get($colors, 'light-blue');
+    font-size: 1.5rem;
+    margin-bottom: map-get($spacing, 'sm');
+    font-weight: 500;
+  }
+}
+
+.contact-info {
+  background: map-get($colors, 'white');
+  margin: -2rem map-get($spacing, 'md') 0;
+  padding: map-get($spacing, 'lg');
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: map-get($spacing, 'md');
+  @include card-shadow;
+
+  @media screen and (max-width: 800px) {
+    margin: -2rem map-get($spacing, 'md') 0;
+    padding: map-get($spacing, 'md');
+    grid-template-columns: 1fr;
+  }
+
+  .contact-item {
+    @include flex-center;
+    gap: map-get($spacing,'xs');
+    color: map-get($colors, 'text-light');
+    transition: color 0.3s ease;
+    &:hover {
+      color: map-get($colors, 'primary-blue');
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    @media screen and (max-width: 800px) {
+      @include flex-left;
+    }
+  }
+}
+
+.main-content {
+  padding: map-get($spacing, '3xl') map-get($spacing, 'xl') map-get($spacing, 'xl');
+
+  @include respond-below('sm') {
+    padding: map-get($spacing, '3xl') map-get($spacing, 'md') map-get($spacing, 'md');
+  }
+  .summary-paragraph{
+    text-align: justify;
+  }
+}
+
+section {
+  margin-bottom: map-get($spacing, '2xl');
+
+  .section-title {
+    @include section-title;
+  }
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: map-get($spacing, 'md');
+
+  .skill-item {
+    background-color: map-get($colors, 'light-blue');
+    color: map-get($colors, 'dark-blue');
+    padding: map-get($spacing, 'sm') map-get($spacing, 'md');
+    border-radius: 4px;
+    text-align: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: map-get($colors, 'primary-blue');
+      color: map-get($colors, 'white');
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.experience-item {
+  margin-bottom: map-get($spacing, 'xl');
+  padding-left: map-get($spacing, 'lg');
+  border-left: 2px solid map-get($colors, 'light-blue');
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: map-get($colors, 'primary-blue');
+  }
+
+  .experience-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: map-get($spacing, 'sm');
+    flex-wrap: wrap;
+    gap: map-get($spacing, 'md');
+
+    .company {
+      font-weight: 600;
+      color: map-get($colors, 'primary-blue');
+    }
+
+    .date {
+      color: map-get($colors, 'text-light');
+      font-size: 0.9rem;
+    }
+  }
+
+  .position {
+    font-weight: 500;
+    margin-bottom: map-get($spacing, 'sm');
+    color: map-get($colors, 'text-dark');
+  }
+
+  ul {
+    list-style-position: outside;
+    color: map-get($colors, 'text-light');
+    padding-left: map-get($spacing, 'lg');
+
+    li {
+      margin-bottom: map-get($spacing, 'sm');
+    }
+  }
+}
+
+.education-item {
+  margin-bottom: map-get($spacing, 'lg');
+  a{
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+  }
+}
+
+footer{
+  background: map-get($colors, 'dark-blue');
+  color: map-get($colors, 'white');
+  padding: map-get($spacing, 'lg') map-get($spacing, 'xl');
+  text-align: center;
+
+  a {
+    color: map-get($colors, 'white');
+    text-decoration: none;
+    font-weight: 600;
+  }
+}
+.footer-for-pdf{
+  display: none;
+}
+
+@media print{
+  .language-switcher {
+    display: none;
+  }
+  .container {
+    border-radius: 0;
+    max-width: 100%;
+  }
+  footer {
+    display: none;
+  }
+  .footer-for-pdf {
+    display: block;
+  }
+}
