@@ -75,7 +75,7 @@ return [
     'volunteering_items' => [
         [
             'company' => 'EESTEC',
-            'period' => 'January 2021 - present',
+            'period' => 'January 2022 - present',
             'position' => 'Web Developer',
             'achievements' => [
                 'Developed and maintained the eestec.net platform',

@@ -75,7 +75,7 @@ return [
     'volunteering_items' => [
         [
             'company' => 'EESTEC',
-            'period' => 'Gennaio 2021 - presente',
+            'period' => 'Gennaio 2022 - presente',
             'position' => 'Sviluppatore Web',
             'achievements' => [
                 'Sviluppato e mantenuto la piattaforma eestec.net',
